@@ -6,9 +6,22 @@ import (
 	"io"
 	stdLog "log"
 	"log/slog"
+	"os"
 
 	"github.com/fatih/color"
 )
+
+func New(level slog.Level) *slog.Logger {
+	opts := PrettyHandlerOptions{
+		SlogOpts: &slog.HandlerOptions{
+			Level: slog.LevelDebug,
+		},
+	}
+
+	handler := opts.NewPrettyHandler(os.Stdout)
+
+	return slog.New(handler)
+}
 
 type PrettyHandlerOptions struct {
 	SlogOpts *slog.HandlerOptions
