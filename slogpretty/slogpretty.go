@@ -14,7 +14,7 @@ import (
 func New(level slog.Level) *slog.Logger {
 	opts := PrettyHandlerOptions{
 		SlogOpts: &slog.HandlerOptions{
-			Level: slog.LevelDebug,
+			Level: level,
 		},
 	}
 
